@@ -1,0 +1,240 @@
+/* Custom Scrollbar for cute feel */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fdfcf0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e6e0d0;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d4ccb8;
+}
+
+/* Base Styles */
+body {
+    background-image: radial-gradient(#8da399 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+body.large-text {
+    font-size: 1.25rem;
+    /* 20px base */
+}
+
+body.large-text .text-xs {
+    font-size: 1rem;
+}
+
+body.large-text .text-sm {
+    font-size: 1.1rem;
+}
+
+body.large-text .text-lg {
+    font-size: 1.5rem;
+}
+
+body.large-text .text-xl {
+    font-size: 1.7rem;
+}
+
+body.large-text .text-2xl {
+    font-size: 2rem;
+}
+
+body.large-text .text-3xl {
+    font-size: 2.5rem;
+}
+
+/* Calendar Days */
+.calendar-day {
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.calendar-day:hover {
+    background-color: #f8f4e3;
+    border-color: #e6a863;
+}
+
+.calendar-day.today {
+    background-color: #e6a863;
+    color: #3e2723;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(230, 168, 99, 0.4);
+}
+
+.calendar-day.selected {
+    border: 3px solid #8da399;
+    background-color: #fff;
+    transform: scale(0.95);
+}
+
+.calendar-day.other-month {
+    color: #ccc;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Event Dot Indicator */
+.event-dot-container {
+    display: flex;
+    gap: 2px;
+    margin-top: 2px;
+}
+
+.event-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #5d4037;
+    border-radius: 50%;
+}
+
+/* Rokuyo & Solar Terms Text */
+.calendar-info {
+    font-size: 0.6rem;
+    color: #8da399;
+    line-height: 1;
+    margin-top: 1px;
+}
+
+body.large-text .calendar-info {
+    font-size: 0.75rem;
+}
+
+
+.rokuyo-taian {
+    color: #ef4444;
+    /* Red for Taian */
+}
+
+/* Stamp Button */
+.stamp-btn {
+    background: white;
+    padding: 8px;
+    border-radius: 12px;
+    border: 2px solid #f8f4e3;
+    text-align: center;
+    min-width: 60px;
+    transition: transform 0.1s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stamp-btn:active {
+    transform: scale(0.95);
+    background: #f8f4e3;
+}
+
+/* Hanko Styling */
+.hanko-stamp {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ef4444;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border: 3px solid #ef4444;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(2) rotate(-20deg);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.hanko-item.checked .hanko-stamp {
+    opacity: 1;
+    transform: scale(1) rotate(-10deg);
+}
+
+/* Modal Animation */
+@keyframes modalPop {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#event-modal:not(.hidden)>div {
+    animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Tap Highlight Removal */
+button,
+input {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Print Styles */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 1cm;
+    }
+
+    body {
+        background: white;
+        color: black;
+        overflow: visible;
+        height: auto;
+    }
+
+    .calendar-day {
+        border: 1px solid #ddd;
+        border-radius: 0;
+        aspect-ratio: auto;
+        height: 100px;
+        align-items: flex-start;
+        padding: 4px;
+    }
+
+    .calendar-day.today {
+        background-color: transparent;
+        color: black;
+        box-shadow: none;
+        border: 2px solid black;
+    }
+
+    .event-dot {
+        display: none;
+    }
+
+    /* Show events as text in print */
+    .print-event-text {
+        display: block !important;
+        font-size: 10px;
+        text-align: left;
+        width: 100%;
+        margin-top: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Print Visibility Controls have been handled in HTML via 'print:hidden' class */
+}
+
+/* Helper for print text (hidden by default) */
+.print-event-text {
+    display: none;
+}

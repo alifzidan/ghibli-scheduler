@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>森のスケジュール帳</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'forest-cream': '#fdfcf0',
+                        'forest-brown': '#5d4037',
+                        'forest-green': '#8da399',
+                        'forest-accent': '#e6a863',
+                        'forest-dark': '#3e2723',
+                        'forest-paper': '#f8f4e3'
+                    },
+                    fontFamily: {
+                        'maru': ['"Zen Maru Gothic"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'paper': '0 4px 6px -1px rgba(93, 64, 55, 0.1), 0 2px 4px -1px rgba(93, 64, 55, 0.06)',
+                        'pressed': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body
+    class="bg-forest-cream text-forest-brown font-maru min-h-screen flex flex-col overflow-hidden transition-all duration-300">
+
+    <!-- Header -->
+    <header class="bg-forest-green text-white p-3 shadow-paper z-10 print:hidden">
+        <div class="max-w-md mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-tree text-xl"></i>
+                <div>
+                    <h1 class="text-xl font-bold leading-none">森の予定表</h1>
+                    <span id="header-wareki" class="text-xs opacity-80 font-bold block">令和--年</span>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <!-- Year Select -->
+                <select id="year-select"
+                    class="bg-white text-forest-brown rounded-lg px-2 py-1 text-sm font-bold outline-none cursor-pointer">
+                    <!-- JS populated -->
+                </select>
+
+                <!-- Tools -->
+                <button id="zoom-btn"
+                    class="bg-white text-forest-green w-8 h-8 rounded-full flex items-center justify-center shadow hover:bg-forest-cream transition"
+                    title="文字を大きく">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button id="print-btn"
+                    class="bg-white text-forest-green w-8 h-8 rounded-full flex items-center justify-center shadow hover:bg-forest-cream transition"
+                    title="印刷モード">
+                    <i class="fas fa-print"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto p-4 relative print:overflow-visible">
+        <div class="max-w-md mx-auto print:max-w-none">
+
+            <!-- Forest Guide Bubble -->
+            <div id="forest-guide"
+                class="mb-4 bg-white p-3 rounded-2xl shadow-paper border-2 border-forest-accent flex items-center gap-3 animate-fade-in print:hidden relative">
+                <div class="text-3xl">🦉</div>
+                <div class="flex-1">
+                    <p id="guide-text" class="text-sm font-bold text-forest-dark">今日の案内をしています...</p>
+                </div>
+                <button id="guide-location-btn"
+                    class="text-forest-green hover:text-forest-accent text-xl p-2 transition animate-bounce-slow"
+                    title="おすすめスポットを聞く">
+                    <i class="fas fa-map-marker-alt"></i>
+                </button>
+            </div>
+
+            <!-- Calendar Navigation -->
+            <div
+                class="flex justify-between items-center mb-4 bg-white p-3 rounded-2xl shadow-paper border-2 border-forest-paper print:hidden">
+                <button id="prev-month" class="text-forest-green hover:text-forest-accent text-3xl transition p-1">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <h2 id="current-month" class="text-2xl font-bold text-forest-dark">---年 --月</h2>
+                <button id="next-month" class="text-forest-green hover:text-forest-accent text-3xl transition p-1">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Print Header (Only for Print) -->
+            <div class="hidden print:block text-center mb-8">
+                <h1 id="print-title" class="text-4xl font-bold border-b-4 border-black inline-block pb-2">2026年 1月</h1>
+            </div>
+
+            <!-- Calendar Grid -->
+            <div
+                class="bg-white rounded-3xl shadow-paper p-3 border-2 border-forest-paper min-h-[350px] print:shadow-none print:border-none">
+                <!-- Weekdays -->
+                <div class="grid grid-cols-7 gap-1 text-center mb-2 font-bold text-forest-green text-sm">
+                    <div class="text-red-400">日</div>
+                    <div>月</div>
+                    <div>火</div>
+                    <div>水</div>
+                    <div>木</div>
+                    <div>金</div>
+                    <div class="text-blue-400">土</div>
+                </div>
+                <!-- Days Container -->
+                <div id="calendar-grid" class="grid grid-cols-7 gap-1 text-center text-lg">
+                    <!-- JS generated days -->
+                </div>
+            </div>
+
+            <!-- Stamp Palette (Quick Add) -->
+            <div class="mt-6 print:hidden">
+                <p class="text-sm font-bold text-forest-green mb-2 ml-2"><i
+                        class="fas fa-stamp mr-1"></i>スタンプでポン！（選択中の日に追加）</p>
+                <div class="flex gap-3 overflow-x-auto pb-2 px-1 scrollbar-hide">
+                    <button class="stamp-btn" data-stamp="🏥" data-label="病院">
+                        <span class="text-2xl">🏥</span><span class="text-xs block">病院</span>
+                    </button>
+                    <button class="stamp-btn" data-stamp="🛒" data-label="買い物">
+                        <span class="text-2xl">🛒</span><span class="text-xs block">買い物</span>
+                    </button>
+                    <button class="stamp-btn" data-stamp="🍵" data-label="お茶">
+                        <span class="text-2xl">🍵</span><span class="text-xs block">お茶</span>
+                    </button>
+                    <button class="stamp-btn" data-stamp="👟" data-label="散歩">
+                        <span class="text-2xl">👟</span><span class="text-xs block">散歩</span>
+                    </button>
+                    <button class="stamp-btn" data-stamp="🧹" data-label="掃除">
+                        <span class="text-2xl">🧹</span><span class="text-xs block">掃除</span>
+                    </button>
+                    <button class="stamp-btn" data-stamp="💊" data-label="薬局">
+                        <span class="text-2xl">💊</span><span class="text-xs block">薬局</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Selected Date Events (Hide in Print Mode?) No, keeping it is fine but usually calendar print is grid only. Let's hide detailed list in print. -->
+            <div class="mt-6 print:hidden">
+                <div class="flex justify-between items-end mb-4">
+                    <h3 id="selected-date-label"
+                        class="text-xl font-bold border-b-4 border-forest-accent inline-block pb-1">
+                        --月--日
+                    </h3>
+                    <button id="add-event-btn"
+                        class="bg-forest-brown text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-xl hover:bg-forest-dark transition transform hover:rotate-90">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+
+                <!-- Health Hanko Area -->
+                <div
+                    class="bg-forest-paper p-3 rounded-xl mb-4 flex justify-around items-center border border-dashed border-forest-green">
+                    <div class="text-center cursor-pointer hanko-item" id="hanko-medicine">
+                        <div
+                            class="w-12 h-12 rounded-full border-2 border-forest-brown flex items-center justify-center bg-white text-2xl relative shadow-inner">
+                            💊
+                            <!-- Checkmark overlay added via JS -->
+                        </div>
+                        <span class="text-xs font-bold mt-1 block">お薬</span>
+                    </div>
+                    <div class="text-center cursor-pointer hanko-item" id="hanko-taiso">
+                        <div
+                            class="w-12 h-12 rounded-full border-2 border-forest-brown flex items-center justify-center bg-white text-2xl relative shadow-inner">
+                            🤸
+                        </div>
+                        <span class="text-xs font-bold mt-1 block">体操</span>
+                    </div>
+                </div>
+
+                <div id="event-list" class="space-y-2 pb-20">
+                    <!-- JS generated events -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="event-modal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 print:hidden">
+        <div
+            class="bg-forest-cream w-full max-w-sm rounded-3xl shadow-2xl p-6 transform transition-all scale-100 border-4 border-white">
+            <h3 class="text-2xl font-bold text-forest-dark mb-6 text-center">予定を書く</h3>
+
+            <form id="event-form" class="space-y-4">
+                <div class="relative">
+                    <label class="block text-forest-green font-bold mb-1 ml-2">タイトル</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="event-title" required placeholder="例：病院、買い物"
+                            class="flex-1 bg-white rounded-xl p-3 text-lg border-2 border-forest-paper focus:border-forest-accent outline-none shadow-inner">
+                        <button type="button" id="voice-btn"
+                            class="w-12 bg-forest-accent text-white rounded-xl text-xl flex items-center justify-center shadow hover:bg-orange-400">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                    </div>
+                    <p id="voice-status" class="text-xs text-forest-accent mt-1 hidden font-bold animate-pulse">
+                        聞いています...</p>
+                </div>
+
+                <div>
+                    <label class="block text-forest-green font-bold mb-1 ml-2">時間</label>
+                    <input type="time" id="event-time" required
+                        class="w-full bg-white rounded-xl p-3 text-lg border-2 border-forest-paper focus:border-forest-accent outline-none shadow-inner">
+                </div>
+
+                <div class="pt-4 flex gap-4">
+                    <button type="button" id="close-modal"
+                        class="flex-1 bg-gray-300 text-gray-600 font-bold py-3 rounded-xl hover:bg-gray-400 transition">
+                        やめる
+                    </button>
+                    <button type="submit"
+                        class="flex-1 bg-forest-green text-white font-bold py-3 rounded-xl hover:bg-teal-600 transition shadow-md">
+                        保存
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Background Decoration -->
+    <div
+        class="fixed bottom-0 left-0 w-full h-32 pointer-events-none opacity-20 -z-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
