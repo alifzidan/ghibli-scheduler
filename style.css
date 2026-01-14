@@ -17,9 +17,18 @@
 }
 
 /* Base Styles */
+html,
+body {
+    overflow-y: auto;
+    overscroll-behavior-y: none;
+    /* Prevents pull-to-refresh on mobile if that was part of the "crash" issue, user didn't ask but often related to "app-like" feel issues, actually better to leave auto or customize. Let's stick to simple scrolling. */
+    overscroll-behavior-y: auto;
+}
+
 body {
     background-image: radial-gradient(#8da399 1px, transparent 1px);
     background-size: 20px 20px;
+    min-height: 100vh;
 }
 
 body.large-text {
