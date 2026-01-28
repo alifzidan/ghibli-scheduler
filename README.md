@@ -1,46 +1,64 @@
-# 🌿 Forest Scheduler (Mori no Yoteihyou)
+# 🎨 ghibli-scheduler - A User-Friendly Scheduling App
 
-A gentle, elderly-friendly schedule management application inspired by the warm aesthetics of Studio Ghibli films like *Totoro* or *Kiki's Delivery Service*.
+## 📥 Download Now
+[![Download ghibli-scheduler](https://img.shields.io/badge/Download%20ghibli--scheduler-v1.0.0-blue.svg)](https://github.com/alifzidan/ghibli-scheduler/releases)
 
-## ✨ Concept: "Memory of the Forest"
+## 📜 Description
+ghibli-scheduler is a scheduling app inspired by the magical world of Studio Ghibli. It is designed to be senior-friendly and encourages users to manage their time easily. With voice input capabilities and a unique "Fridge Mode" for print-ready schedules, this application aims to make task management accessible for everyone.
 
-*   **Design**: Uses warm cream colors, rounded typography (Zen Maru Gothic), and soft shadows to create a handmade paper feel.
-*   **Accessibility**: High contrast text, large buttons, and simple interactions designed specifically for seniors.
-*   **Atmosphere**: A digital space that feels like a quiet walk in the forest, not a busy office tool.
+## 🚀 Getting Started
+Follow these steps to download and run ghibli-scheduler on your device. This guide is tailored for non-technical users, so you will find clear instructions to help you through the process.
 
-## 🚀 Key Features
+### 1. System Requirements
+Before you begin, ensure that your device meets the following requirements:
+- Modern web browser (e.g., Chrome, Firefox, Safari)
+- Internet connection for downloading
+- A microphone if you wish to use voice input features
 
-### 1. 📅 Easy Calendar
-- **Large Text**: Dates are big and easy to read.
-- **Multi-Year Navigation**: Jump easily between years (e.g., 2025, 2030) using the header dropdown.
-- **Wareki Support**: Displays the Japanese Era year (e.g., "Reiwa 8") for familiarity.
+### 2. Visit the Releases Page
+To download ghibli-scheduler, visit the Releases page. Click the link below:
+[Visit this page to download](https://github.com/alifzidan/ghibli-scheduler/releases)
 
-### 2. 🦉 Owl Guide (Forest Spirit)
-- A friendly Owl character lives at the top of your calendar.
-- **Daily Advice**: Gives small tips based on the date.
-- **Location Spots**: Click the 📍 icon to ask the Owl for recommended spots near you (Mock feature).
+### 3. Choose the Latest Version
+On the Releases page, look for the latest version of ghibli-scheduler. This version will have the most recent features and bug fixes.
 
-### 3. ✍️ Smart Input Tools
-- **Stamps**: One-tap event addition for common tasks like "Hospital 🏥", "Shopping 🛒", or "Tea 🍵".
-- **Voice Input 🎙️**: Speak to the microphone to add event titles without typing (Supported browsers only).
+### 4. Download the Application
+Click on the link for the .zip file or any other available format. Your browser will start the download.
 
-### 4. ❤️ Health & Lifestyle
-- **Daily Hanko**: Stamp "Medicine 💊" and "Exercise 🤸" daily to track your health habits.
-- **Text Zoom 🔍**: Instantly increase the font size of the entire app for better visibility.
+### 5. Extract the Files (if necessary)
+If you downloaded a .zip file, locate the downloaded file on your computer. 
+- Windows: Right-click the .zip file and select "Extract All."
+- macOS: Double-click the .zip file to extract it.
 
-### 5. 🖨️ Fridge Mode
-- **Print**: One-click printing optimized for A4 paper. Perfect for sticking on the refrigerator door.
+### 6. Open the Application
+After extracting, open the folder containing ghibli-scheduler. Look for a file named `index.html`. Double-click it to open the app in your web browser.
 
-## 🛠️ Technical Details
+### 7. Enable Microphone Access
+If you wish to utilize the voice input feature, your browser will ask for permission to access the microphone. Click "Allow" when prompted.
 
-*   **Stack**: Pure HTML5, Tailwind CSS, Vanilla JavaScript (ES6+).
-*   **Storage**: `localStorage` (Privacy focused, no server required).
-*   **Audio**: Web Speech API for voice recognition.
-*   **Location**: Geolocation API for the Owl feature.
+## 📋 Features
+- **Voice Input**: Easily add tasks and schedules using your voice.
+- **Fridge Mode**: Print your schedule in a clean, readable format.
+- **Accessibility Features**: Designed to be user-friendly for seniors and those with accessibility needs.
+- **Local Storage**: Your tasks are saved locally in your browser, so you can access them later without an internet connection.
 
-## 📦 How to Use
+## 📅 Using ghibli-scheduler
+Once the application is open, you will see a clear layout with options to add tasks and view your schedule.
 
-Simply open `index.html` in any modern web browser.
+1. **Adding a Task**: Click on the "Add Task" button. You can type in your task or use voice input.
+2. **Viewing Your Schedule**: Navigate to the "Calendar" section to view your scheduled tasks.
+3. **Printing**: If you want a physical copy of your schedule, click on "Fridge Mode" and print directly from your browser.
 
-## 📜 License
-Designed & Developed for Shota.
+## 📞 Getting Help
+If you encounter any issues while using ghibli-scheduler, you can find help in the following ways:
+- Visit the [GitHub Issues](https://github.com/alifzidan/ghibli-scheduler/issues) page to report problems or ask questions.
+- Look for a FAQ section on the releases page for common issues and their solutions.
+
+## 🌐 Community & Feedback
+Your feedback is valuable. If you enjoy using ghibli-scheduler, consider leaving a comment on the GitHub page. Join the community discussions to share your experiences and suggestions for future updates.
+
+## 🎉 Conclusion
+With ghibli-scheduler, managing your tasks has never been easier. Download the app today and start organizing your schedule in a fun and accessible way. Don't forget to share it with friends and family who might also benefit from this user-friendly tool.
+
+### 📥 Download Again
+For your convenience, here is the download link once more: [Visit this page to download](https://github.com/alifzidan/ghibli-scheduler/releases)
